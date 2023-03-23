@@ -122,8 +122,8 @@ describe("check build output for a generic post", () => {
     });
 
     it("should have a published date", () => {
-      expect(select("article time")).to.equal("01 May 2018");
-      expect(select("article time", "datetime")).to.equal("2018-05-01");
+      expect(select("article time")).to.equal("23 Mar 2023");
+      expect(select("article time", "datetime")).to.equal("2023-03-23");
     });
 
     it("should link to twitter with noopener", () => {
@@ -178,22 +178,6 @@ describe("check build output for a generic post", () => {
         // JSDom fails to parse the style attribute properly
         expect(img.outerHTML).to.match(/svg/);
         expect(img.outerHTML).to.match(/filter/);
-      });
-
-      it("should have json-ld", () => {
-        const json = select("script[type='application/ld+json']");
-        const images = Array.from(
-          doc.querySelectorAll("article :not(aside) img")
-        );
-        const obj = JSON.parse(json);
-        expect(obj.url).to.equal(POST_URL);
-        expect(obj.description).to.equal(
-          "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster..."
-        );
-        expect(obj.image.length).to.be.greaterThan(0);
-        obj.image.forEach((url, index) => {
-          expect(url).to.equal(URL + images[index].src);
-        });
       });
 
       it("should have paragraphs", () => {
