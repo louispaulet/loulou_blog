@@ -2,8 +2,8 @@ const GA_ENDPOINT = `https://www.google-analytics.com/collect`;
 
 // Domains to allowlist. Replace with your own!
 const originallowlist = [];
-// Update me.
-allowlistDomain("eleventy-high-performance-blog-sample.industrialempathy.com/");
+
+allowlistDomain("https://louispaulet.github.io/");
 
 let hot = false;
 let age = Date.now();
