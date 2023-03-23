@@ -44,14 +44,14 @@ describe("check build output for a generic post", () => {
     });
 
     it("should have metadata", () => {
-      assert.equal(select("title"), "This is my first post.");
+      assert.equal(select("title"), "Handwritten digits demo!");
       expect(select("meta[property='og:image']", "content")).to.match(
         /\/img\/remote\/\w+.jpg/
       );
       assert.equal(select("link[rel='canonical']", "href"), POST_URL);
       assert.equal(
         select("meta[name='description']", "content"),
-        "This is a post on My Blog about agile frameworks."
+        "MNIST digits classifier demo with canvas, allowing the user to create their own hand-drawn digits."
       );
     });
 
@@ -116,7 +116,7 @@ describe("check build output for a generic post", () => {
     });
 
     it("should have a header", () => {
-      expect(select("header > h1")).to.equal("This is my first post.");
+      expect(select("header > h1")).to.equal("Handwritten digits demo!");
       expect(select("header aside")).to.match(/\d+ min read./);
       expect(select("header dialog", "id")).to.equal("message");
     });

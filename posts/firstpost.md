@@ -1,31 +1,67 @@
 ---
-title: This is my first post.
-description: This is a post on My Blog about agile frameworks.
-date: 2018-05-01
-scheduled: 2018-05-01
+title: Handwritten digits demo!
+description: MNIST digits classifier demo with canvas, allowing the user to create their own hand-drawn digits.
+date: 2023-03-23
+scheduled: 2023-03-23
 tags:
-  - another-tag
+  - mnist
+  - classifier
+  - image
+  - docker
 layout: layouts/post.njk
 image: https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+# MNIST-KERAS-FLASK-JS
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+This repository contains a simple web application that uses Keras and Flask to create an MNIST digit recognition model. The application allows users to upload an image or draw on an HTML canvas to get digit predictions.
 
-![An image](https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg)
+## Features
 
-## Section Header
+- Keras-based MNIST digit recognition model
+- Flask server for serving the model
+- Web interface to test the model with uploaded images or drawings on an HTML canvas
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+## Requirements
 
-``` text/2-3
-// this is a command
-function myCommand() {
-	let counter = 0;
-	counter++;
-}
+Make sure you have the following Python packages installed:
 
-// Test with a line break above this line.
-console.log('Test');
-```
+- Flask==2.1.1
+- Flask-CORS==3.0.10
+- tensorflow==2.6.0
+- Keras==2.6.0
+- numpy==1.19.5
+- Pillow==9.0.1
+- protobuf==3.20.1
+
+You can install the required packages using the following command:
+
+````text/2-3
+pip install -r requirements.txt
+````
+
+## Docker
+
+The application can be built and run using Docker. To build the Docker image, run the following command in the project directory:
+````text/2-3
+docker build -t mnist-keras-flask-js .
+````
+
+
+To run the Docker container, use the following command:
+
+````text/2-3
+docker run -p 5000:5000 mnist-keras-flask-js
+````
+
+
+The application will be available at `http://127.0.0.1:5000`.
+
+## Usage
+
+There are two web pages available for testing the model:
+
+1. **test-api.html**: This page allows you to upload an image to test the MNIST prediction model. The prediction result will be displayed below the image upload form.
+2. **canvas_drawing.html**: This page allows you to draw a digit on an HTML canvas. The MNIST prediction model will predict the digit based on your drawing, and the prediction result will be displayed next to the canvas.
+
+To access these pages, you can either run the Flask server locally or use the Docker container as described above. Then, navigate to `http://127.0.0.1:5000/static/test-api.html` or `http://127.0.0.1:5000/static/canvas_drawing.html` in your web browser.	
