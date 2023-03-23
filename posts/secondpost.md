@@ -1,32 +1,70 @@
 ---
-title: This is my second post.
-description: This is a post on My Blog about leveraging agile frameworks.
-date: 2018-07-04
-scheduled: 2018-07-04
+title: Handwritten digits demo!
+description: MNIST digits classifier demo with canvas, allowing the user to create their own hand-drawn digits.
+date: 2023-03-23
+scheduled: 2023-03-23
 tags:
-  - number-2
+  - mnist
+  - classifier
+  - image
+  - docker
 layout: layouts/post.njk
+image: https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif
 ---
 
-Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+# MNIST-KERAS-FLASK-JS
 
-## Section Header
+![a gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif)
 
-<a href="{{ '/posts/firstpost/' | url }}">First post</a>
-<a href="{{ '/posts/thirdpost/' | url }}">Third post</a>
 
-Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+This repository contains a simple web application that uses Keras and Flask to create an MNIST digit recognition model. The application allows users to upload an image or draw on an HTML canvas to get digit predictions.
 
-Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+## Features
 
-# Test SVG
+- Keras-based MNIST digit recognition model
+- Flask server for serving the model
+- Web interface to test the model with uploaded images or drawings on an HTML canvas
 
-![Test Share SVG](/img/share.svg)
+## Requirements
 
-# Test Relative Local Image
+Make sure you have the following Python packages installed:
 
-![Test Share SVG](../../img/doener.jpg)
+- Flask==2.1.1
+- Flask-CORS==3.0.10
+- tensorflow==2.6.0
+- Keras==2.6.0
+- numpy==1.19.5
+- Pillow==9.0.1
+- protobuf==3.20.1
 
-# Test PNG
+You can install the required packages using the following command:
 
-![Png By @clipartmax.com](https://www.clipartmax.com/png/full/0-9896_film-clipart-free-to-use-public-domain-movie-clip-art-directors-board.png)
+````text/2-3
+pip install -r requirements.txt
+````
+
+## Docker
+
+The application can be built and run using Docker. To build the Docker image, run the following command in the project directory:
+````text/2-3
+docker build -t mnist-keras-flask-js .
+````
+
+
+To run the Docker container, use the following command:
+
+````text/2-3
+docker run -p 5000:5000 mnist-keras-flask-js
+````
+
+
+The application will be available at `http://127.0.0.1:5000`.
+
+## Usage
+
+There are two web pages available for testing the model:
+
+1. **test-api.html**: This page allows you to upload an image to test the MNIST prediction model. The prediction result will be displayed below the image upload form.
+2. **canvas_drawing.html**: This page allows you to draw a digit on an HTML canvas. The MNIST prediction model will predict the digit based on your drawing, and the prediction result will be displayed next to the canvas.
+
+To access these pages, you can either run the Flask server locally or use the Docker container as described above. Then, navigate to `http://127.0.0.1:5000/static/test-api.html` or `http://127.0.0.1:5000/static/canvas_drawing.html` in your web browser.	

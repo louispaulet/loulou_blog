@@ -9,12 +9,12 @@ tags:
   - image
   - docker
 layout: layouts/post.njk
-image: https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg
+image: https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif
 ---
 
 # MNIST-KERAS-FLASK-JS
 
--![An image](https://cdn.pixabay.com/photo/2020/08/30/20/54/rice-field-5530707_1280.jpg)
+![a gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif)
 
 
 This repository contains a simple web application that uses Keras and Flask to create an MNIST digit recognition model. The application allows users to upload an image or draw on an HTML canvas to get digit predictions.

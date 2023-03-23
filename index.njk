@@ -1,19 +1,22 @@
 ---
-title: Louis Paulet side project hub
+title: Louis Paulet side projects
 layout: layouts/home.njk
 description: homepage layout
 image: https://upload.wikimedia.org/wikipedia/en/a/a9/Example.jpg
 date: Last Modified
 ---
 
-<p>
-  Github page of Louis Paulet - 
-  <a href="https://github.com/louispaulet/">Github</a>.  - 
-  <a href="https://www.linkedin.com/in/louispaulet/">Linkedin</a>.
-</p>
+<div id='intro'>
+  <img src="https://i.imgur.com/1rXmpj2.jpg" alt="drawing of the architecture of 4 buildings"> </br>
+  <p>
+    Github page of Louis Paulet - 
+    <a href="https://github.com/louispaulet/">Github</a>.  - 
+    <a href="https://www.linkedin.com/in/louispaulet/">Linkedin</a>.
+  </p>
+</div>
 
 <div id="posts">
-  <h2>Posts</h2>
+  <h2>Latest posts</h2>
   {% set postslist = collections.posts %}
   {% include "postslist.njk" %}
 </div>
