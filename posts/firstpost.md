@@ -1,6 +1,6 @@
 ---
 title: Handwritten digits demo!
-description: MNIST digits classifier demo with canvas, allowing the user to create their own hand-drawn digits.
+description: Building a model that can accurately recognize hand-drawn digits is a classic problem in the field of computer vision. In addition to building a highly accurate CNN model, I also developed a user-friendly interface that allows users to draw their own digits on a canvas and see the model's predictions in real time.
 date: 2023-03-23
 scheduled: 2023-03-23
 tags:

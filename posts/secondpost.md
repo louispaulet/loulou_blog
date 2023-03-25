@@ -1,6 +1,6 @@
 ---
-title: Handwritten digits demo!
-description: MNIST digits classifier demo with canvas, allowing the user to create their own hand-drawn digits.
+title: OpenAI CLIP labelling and searching
+description: CLIP (Contrastive Language-Image Pre-training) is a deep learning model developed by OpenAI that can learn visual concepts from natural language supervision. It can understand images based on their descriptions and generate descriptions of images. In this post, we'll explore what CLIP is, how it works, and some of its exciting applications.
 date: 2023-03-23
 scheduled: 2023-03-23
 tags:
@@ -9,62 +9,99 @@ tags:
   - image
   - docker
 layout: layouts/post.njk
-image: https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif
+image: https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzZmZDhhZTU1YWMzYTJkMmQ0Njc4YTZiYTZhYjJkYWU1NTljZDFkMSZjdD1n/cLjcwWMnrju7pLBsqV/giphy.gif
 ---
 
-# MNIST-KERAS-FLASK-JS
+![a gif](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzZmZDhhZTU1YWMzYTJkMmQ0Njc4YTZiYTZhYjJkYWU1NTljZDFkMSZjdD1n/cLjcwWMnrju7pLBsqV/giphy.gif)
 
-![a gif](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWViNjg1ZmIwMWZhOGZlZmY4ZTBmN2I4YmFkNTZhYTUzZGJjODQ1MiZjdD1n/wIYiDdDAMqsM0J9yhM/giphy.gif)
-
-
-This repository contains a simple web application that uses Keras and Flask to create an MNIST digit recognition model. The application allows users to upload an image or draw on an HTML canvas to get digit predictions.
+This repository contains a Flask and React-based web application for finding the best matching text description for a set of images using OpenAI's CLIP model. The application provides a user-friendly interface for uploading images, inputting text descriptions, and displaying the best matching text for each image.
 
 ## Features
 
-- Keras-based MNIST digit recognition model
-- Flask server for serving the model
-- Web interface to test the model with uploaded images or drawings on an HTML canvas
+- Drag and drop or select images to analyze
+- Enter two text descriptions to compare
+- Best matching text for each image is calculated using the CLIP model
+- Cosine similarity is used to measure the similarity between image and text embeddings
+- Results are displayed in a list, with image thumbnails and corresponding best matching text
 
-## Requirements
+## Repository Structure
 
-Make sure you have the following Python packages installed:
+The repository is organized into two main folders: `clip-filter-backend` and `clip-filter-frontend`.
 
-- Flask==2.1.1
-- Flask-CORS==3.0.10
-- tensorflow==2.6.0
-- Keras==2.6.0
-- numpy==1.19.5
-- Pillow==9.0.1
-- protobuf==3.20.1
+### `clip-filter-backend`
 
-You can install the required packages using the following command:
+This folder contains the Flask backend for the application. The backend consists of a single API endpoint, `/image_text_similarity_best_match`, which accepts an image and two text descriptions as input and returns the best matching text description for the image.
 
-````text/2-3
-pip install -r requirements.txt
-````
+- `Dockerfile`: Configuration for building the backend Docker container
+- `app.py`: Main Flask application file, containing the API endpoint and the CLIP model integration
+- `test_unit.py`: Unit tests for the backend
+- `test_integration.py`: Integration tests for the backend
 
-## Docker
+### `clip-filter-frontend`
 
-The application can be built and run using Docker. To build the Docker image, run the following command in the project directory:
-````text/2-3
-docker build -t mnist-keras-flask-js .
-````
+This folder contains the React frontend for the application. The frontend provides a user interface for uploading images, inputting text descriptions, and displaying the results.
+
+- `Dockerfile`: Configuration for building the frontend Docker container
+- `src/App.css`: CSS file containing the styles for the frontend
+- `src/App.js`: Main React component, containing the application logic and user interface
+
+### Other Files
+
+- `docker-compose.yml`: Configuration for running the frontend and backend services using Docker Compose
+- `run_tests.sh`: Shell script to run unit and integration tests using Docker Compose
+
+## Getting Started
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+
+### Running the Application
+
+1. Clone the repository:
+```bash
+git clone https://github.com/louispaulet/OpenAI_CLIP-REACT-FLASK.git
+```
+
+2. Change to the repository directory:
+```bash
+cd OpenAI_CLIP-REACT-FLASK
+```
+
+3. Build and run the application using Docker Compose:
+```bash
+docker-compose up --build
+```
+
+4. Access the application in your web browser at http://localhost.
+
+### Running Unit and Integration Tests
+
+Before running the tests, make sure you have Docker and Docker Compose installed on your system. To run the unit and integration tests, follow these steps:
+
+1. Make sure the run_tests.sh script (in the project root directory) is executable. In your terminal or command prompt, run the following command:
+```bash
+chmod +x run_tests.sh
+```
+
+2. Run the tests using the script:
+```bash
+./run_tests.sh
+```
 
 
-To run the Docker container, use the following command:
+Note: If you're on Windows, use the run_tests.bat batch file to run the tests. Simply execute the following command:
+```bash
+run_tests.bat
+```
 
-````text/2-3
-docker run -p 5000:5000 mnist-keras-flask-js
-````
+The script will start the backend and frontend services, wait for them to be up and running, execute the unit and integration tests, and then stop the backend and frontend services. The test results will be displayed in the console.
 
+## Contributing
 
-The application will be available at `http://127.0.0.1:5000`.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Usage
+## License
 
-There are two web pages available for testing the model:
-
-1. **test-api.html**: This page allows you to upload an image to test the MNIST prediction model. The prediction result will be displayed below the image upload form.
-2. **canvas_drawing.html**: This page allows you to draw a digit on an HTML canvas. The MNIST prediction model will predict the digit based on your drawing, and the prediction result will be displayed next to the canvas.
-
-To access these pages, you can either run the Flask server locally or use the Docker container as described above. Then, navigate to `http://127.0.0.1:5000/static/test-api.html` or `http://127.0.0.1:5000/static/canvas_drawing.html` in your web browser.	
+[MIT](https://choosealicense.com/licenses/mit/)
